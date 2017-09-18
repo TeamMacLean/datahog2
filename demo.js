@@ -1,8 +1,6 @@
 'use strict';
-
-const Run = require('./lib/ena/run');
-
-Run.GetRun('ERR978595')
+const ENA = require('./lib/ena');
+ENA.Run.GetRun('ERR978595')
     .then(run => {
         console.log('run 0', run.object);
         run.getExperiment()
