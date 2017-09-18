@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo</title>
+</head>
+<body>
+
+<button id="button"></button>
+<p id="output"></p>
+
+<script>
+    const Run = require('../lib/ena/run');
+
+
+    document.querySelectorAll('#button').on('click', runIt);
+
+    function runIt() {
+        Run.GetRun('ERR978595')
+            .then(run => {
+                document.querySelectorAll('#output').textContent = JSON.stringify(run.object, null, 2);
+            })
+            .catch(err => {
+                console.error('FAIL!', err);
+            });
+    }
+</script>
+
+</body>
+</html>
