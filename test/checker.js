@@ -1,7 +1,7 @@
 const checker = require('../lib/checker');
 // const Error = require('../lib/error');
 
-// const assert = require('assert');
+const assert = require('assert');
 
 
 describe('Checker', function () {
@@ -15,7 +15,7 @@ describe('Checker', function () {
         });
     });
     describe('.processRuns()', function () {
-        it('should return -1 when the value is not present', function (done) {
+        it('should save a new run db record for each ID', function (done) {
             // assert.equal(-1, [1, 2, 3].indexOf(4));
             let runIDS = [
                 'ERR978595',
@@ -33,6 +33,7 @@ describe('Checker', function () {
             ];
             checker.processNewRuns(runIDS)
                 .then(savedRuns => {
+                    assert.equal(savedRuns.length, runIDS.length);
                     done();
                 })
                 .catch(err => done(err));
