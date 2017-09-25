@@ -3,6 +3,9 @@ const router = express.Router();
 const AuthLib = require('../lib/auth');
 const AuthController = require('../controllers/auth');
 const ExperimentsController = require('../controllers/experiments');
+const RunsController = require('../controllers/runs');
+const StudiesController = require('../controllers/studies');
+const SamplesController = require('../controllers/samples');
 router.route('/')
     .get((req, res) => res.render('index'));
 
@@ -17,6 +20,18 @@ router.route(['/signout', '/logout'])
 router.route('/experiments')
     .all(isAuthenticated)
     .get(ExperimentsController.index);
+
+router.route('/studies')
+    .all(isAuthenticated)
+    .get(StudiesController.index);
+
+router.route('/samples')
+    .all(isAuthenticated)
+    .get(SamplesController.index);
+
+router.route('/runs')
+    .all(isAuthenticated)
+    .get(RunsController.index);
 
 module.exports = router;
 

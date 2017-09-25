@@ -1,0 +1,15 @@
+<% include ../head.ejs %>
+
+<div class="padder">
+    <div class="container">
+        <% runs.map(run=>{ %>
+        <div class="row">
+            <div class="col">
+                <a href="/runs/<%- run.accession %>"><%- run.accession %></a>
+            </div>
+        </div>
+        <% }) %>
+    </div> <!-- /container -->
+</div>
+
+<% include ../foot.ejs %>
