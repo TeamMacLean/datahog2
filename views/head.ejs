@@ -5,16 +5,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- Title -->
+
+    <title>DataHog</title>
+
+    <!-- Meta -->
+    <meta name="description" content="TSL Data Manager, DataHog">
+    <meta name="author" content="Martin Page">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
           integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link rel="stylesheet" href="/ui/custom.css">
+    <link rel="stylesheet" href="/style/custom.css">
 </head>
 <body>
 
 
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
         <img src="/img/datahog.svg" width="30" height="30" class="d-inline-block align-top" alt="">
         DATAHOG
     </a>
@@ -35,24 +43,33 @@
                 <a class="nav-link" href="#">Studys</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Experiments</a>
+                <a class="nav-link" href="/experiments">Experiments</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Runs</a>
             </li>
         </ul>
+
+
         <ul class="navbar-nav ml-auto">
+            <% if(locals.signedInUser){ %>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">#Username</a>
+                   aria-haspopup="true" aria-expanded="false"><%- locals.signedInUser.name %></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown01">
                     <a class="dropdown-item" href="#">My Submissions</a>
                     <a class="dropdown-item" href="#">Help</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Sign Out</a>
+                    <a class="dropdown-item" href="/signout">Sign Out</a>
                 </div>
             </li>
+            <% } else { %>
+
+            <a class="btn btn-success" href="/signin" role="button">Sign in</a>
+            <% } %>
         </ul>
+
+
         <!--<form class="form-inline my-2 my-lg-0">-->
         <!--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">-->
         <!--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->

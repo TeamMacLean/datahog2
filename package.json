@@ -2,14 +2,22 @@
   "name": "datahog2",
   "version": "0.0.1",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.7",
     "express": "^4.15.4",
+    "express-session": "^1.15.5",
+    "gravatar": "^1.6.0",
     "node-schedule": "^1.2.5",
+    "passport": "^0.4.0",
+    "passport-ldapauth": "^2.0.0",
     "queue": "^4.4.1",
     "request": "^2.81.0",
+    "session-rethinkdb": "^2.0.0",
     "thinky": "^2.3.9",
-    "xml2json": "^0.11.0"
+    "xml2json": "^0.11.0",
+    "xss": "^0.3.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

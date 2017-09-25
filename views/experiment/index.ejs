@@ -1,0 +1,15 @@
+<% include ../head.ejs %>
+
+<div class="padder">
+    <div class="container">
+        <% experiments.map(experiment=>{ %>
+        <div class="row">
+            <div class="col">
+                <a href="/experiments/<%- experiment.accession %>"><%- experiment.accession %></a>
+            </div>
+        </div>
+        <% }) %>
+    </div> <!-- /container -->
+</div>
+
+<% include ../foot.ejs %>
