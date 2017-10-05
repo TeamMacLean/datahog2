@@ -10,3 +10,5 @@ const Sample = thinky.createModel("Sample", {
 });
 
 module.exports = Sample;
+
+Sample.ensureIndex("accession");

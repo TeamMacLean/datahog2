@@ -4,8 +4,13 @@ body {
     /*padding-top: 40px;*/
 }
 
-.padder {
-    padding-top: 2.5rem;
+.topmargin {
+    margin-top: 1.5rem !important;
+}
+
+.center {
+    text-align: center;
+    /*margin: auto;*/
 }
 
 /*SIGNIN*/

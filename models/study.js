@@ -10,3 +10,5 @@ const Study = thinky.createModel("Study", {
 });
 
 module.exports = Study;
+
+Study.ensureIndex("accession");

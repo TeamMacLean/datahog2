@@ -1,15 +1,38 @@
 <% include ../head.ejs %>
 
-<div class="padder">
+<div class="topmargin">
     <div class="container">
-        <% experiments.map(experiment=>{ %>
+
+        <h1>Experiments</h1>
+
+        <h2 class="mt-4">Your groups experiments</h2>
+        <% SortToRows(3, experiments.mine).map(row=>{ %>
         <div class="row">
-            <div class="col">
-                <a href="/experiments/<%- experiment.accession %>"><%- experiment.accession %></a>
+            <% row.map(experiment=>{ %>
+            <div class="col-sm-4">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h4 class="card-title"><%- experiment.accession %></h4>
+                        <a href="/experiments/<%- experiment.accession %>" class="btn btn-primary">Show</a>
+                    </div>
+                </div>
             </div>
+            <% }) %>
         </div>
         <% }) %>
-    </div> <!-- /container -->
+
+        <h2 class="mt-4">Unclaimed experiments</h2>
+
+        <% SortToRows(4, experiments.unclaimed).map(row=>{ %>
+        <div class="row">
+            <% row.map(experiment=>{ %>
+            <div class="col-sm-3">
+                <a href="/experiments/<%- experiment.accession %>"><%- experiment.accession %></a>
+            </div>
+            <% }) %>
+        </div>
+        <% }) %>
+    </div>
 </div>
 
 <% include ../foot.ejs %>

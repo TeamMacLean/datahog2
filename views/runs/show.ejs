@@ -1,0 +1,29 @@
+<% include ../head.ejs %>
+
+<div class="topmargin">
+    <div class="container">
+        <h1><%- run.accession %></h1>
+
+        <% if(run.experiment.group){ %>
+        <p>Claimed by <strong><%- run.experiment.getGroup().name %></strong></p>
+        <% } %>
+        <a href="/runs/<%- run.accession %>/download" class="btn btn-primary">Request file(s) be downloaded</a>
+        <!--SHOULD BE MOVED SO ONLY VISIBLE IF CLAIMED-->
+        <h2 class="mt-4">Experiment</h2>
+        <a href="/experiments/<%- run.experiment.accession %>"
+           style="display:block;"><%- run.experiment.accession %></a>
+
+        <h2 class="mt-4">Reads</h2>
+
+        <% run.reads.map(read=>{ %>
+        <a href="#" style="display:block;"><%- read.fileName %></a>
+        <% }) %>
+
+        <h2 class="mt-4">Raw</h2>
+
+        <pre><%- JSON.stringify(run.getObject(), null, 2) %></pre>
+    </div>
+</div>
+
+
+<% include ../foot.ejs %>

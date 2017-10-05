@@ -1,0 +1,33 @@
+<% include ../head.ejs %>
+
+<div class="topmargin">
+    <div class="container">
+
+        <h1>Groups</h1>
+
+        <% SortToRows(3, groups).map(row=>{ %>
+
+        <div class="row">
+
+            <% row.map(group=>{ %>
+            <div class="col-md-4">
+                <div class="card border-primary mb-3" style="width: 100%;">
+                    <div class="card-body">
+                        <h4 class="card-title"><%- group.name %></h4>
+                        <h6 class="card-subtitle mb-2 text-muted"><%-group.shortName%></h6>
+                        <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of-->
+                            <!--the-->
+                            <!--card's content.</p>-->
+                        <a href="#" class="btn btn-primary">Browse</a>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+
+        </div>
+
+        <% }) %>
+    </div>
+</div> <!-- /container -->
+
+<% include ../foot.ejs %>

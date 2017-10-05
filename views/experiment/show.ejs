@@ -1,0 +1,44 @@
+<% include ../head.ejs %>
+
+<div class="topmargin">
+    <div class="container">
+        <h1><%- experiment.accession %></h1>
+
+        <% if(experiment.group){ %>
+        <p>Claimed by <strong><%- experiment.getGroup().name %></strong></p>
+        <% } else { %>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                data-whatever="@mdo">Claim
+        </button>
+        <%
+            var claimable = experiment;
+            var claimURL = `/experiments/${claimable.accession}/claim`;
+        %>
+        <% include ../claim_modal.ejs %>
+        <% } %>
+
+        <hr>
+
+        <% if(experiment.group){ %>
+        <p>HPC Path: N/A</p>
+        <% } %>
+
+        <h2 class="mt-4">Runs</h2>
+        <% experiment.runs.map(run=>{ %>
+        <a href="/runs/<%- run.accession %>" style="display:block;"><%- run.accession %></a>
+        <% }) %>
+
+        <h2 class="mt-4">Studies</h2>
+        <p>N/A</p>
+
+        <h2 class="mt-4">Samples</h2>
+        <p>N/A</p>
+
+        <h2 class="mt-4">Raw</h2>
+
+        <pre><%- JSON.stringify(experiment.getObject(), null, 2) %></pre>
+    </div>
+</div>
+
+
+<% include ../foot.ejs %>

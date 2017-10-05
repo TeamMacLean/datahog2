@@ -2,7 +2,9 @@
     <hr>
 
     <footer>
-        <p>Made with <span style="color:#ED5565;">&#9825;</span> by Team MacLean for <a href="http://tsl.ac.uk">The Sainsbury Laboratory</a></p>
+        <p>Made with <span style="color:#ED5565;">&#9825;</span> by <a href="http://www.danmaclean.info/">Team
+                MacLean</a> for <a href="http://tsl.ac.uk">The
+                Sainsbury Laboratory</a></p>
     </footer>
 </div>
 
@@ -15,5 +17,15 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
         integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
         crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+
+    $(document).ready(function () {
+        $('ul.navbar-nav a[href="' + window.location.pathname + '"]').parent().addClass('active');
+    });
+</script>
 </body>
 </html>

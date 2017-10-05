@@ -9,6 +9,7 @@ const passport = require('passport');
 const server = require('http').createServer(app);
 const Auth = require('./lib/auth');
 const routes = require('./routes');
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
@@ -28,22 +29,33 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.locals.SortToRows = function (perLine, array) {
+
+    return array.reduce((acc, curr, i) => {
+        if (!(i % perLine)) {    // if index is 0 or can be divided by the `size`...
+            acc.push(array.slice(i, i + perLine));   // ..push a chunk of the original array to the accumulator
+        }
+        return acc;
+    }, []);
+
+};
+
 app.use((req, res, next) => {
 
     // console.log(req.user);
-
+    res.locals.groups = config.groups;
     if (req.user) {
         res.locals.signedInUser = {};
         res.locals.signedInUser.username = req.user.username;
         res.locals.signedInUser.name = req.user.name;
         res.locals.signedInUser.mail = req.user.mail;
-        // res.locals.signedInUser.isAdmin = util.isAdmin(req.user.username);
-        if (req.user.iconURL) {
-            res.locals.signedInUser.iconURL = req.user.iconURL;
-        }
+        res.locals.signedInUser.isAdmin = Auth.isAdmin(req.user.username);
+        res.locals.signedInUser.iconURL = req.user.iconURL;
+        res.locals.signedInUser.group = req.user.group;
+
         return next(null, req, res);
     } else {
-        next();
+        return next();
     }
 });
 

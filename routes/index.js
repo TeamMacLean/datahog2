@@ -6,6 +6,8 @@ const ExperimentsController = require('../controllers/experiments');
 const RunsController = require('../controllers/runs');
 const StudiesController = require('../controllers/studies');
 const SamplesController = require('../controllers/samples');
+const GroupsController = require('../controllers/groups');
+const HelpController = require('../controllers/help');
 router.route('/')
     .get((req, res) => res.render('index'));
 
@@ -16,10 +18,20 @@ router.route(['/signin', '/login'])
 router.route(['/signout', '/logout'])
     .get(AuthController.signOut);
 
+router.route('/groups')
+    .all(isAuthenticated)
+    .get(GroupsController.index);
+
 
 router.route('/experiments')
     .all(isAuthenticated)
     .get(ExperimentsController.index);
+router.route('/experiments/:accession')
+    .all(isAuthenticated)
+    .get(ExperimentsController.show);
+router.route('/experiments/:accession/claim')
+    .all(isAuthenticated)
+    .post(ExperimentsController.claim);
 
 router.route('/studies')
     .all(isAuthenticated)
@@ -29,9 +41,23 @@ router.route('/samples')
     .all(isAuthenticated)
     .get(SamplesController.index);
 
-router.route('/runs')
+router.route('/runs/:accession')
     .all(isAuthenticated)
-    .get(RunsController.index);
+    .get(RunsController.show);
+router.route('/runs/:accession/download')
+    .all(isAuthenticated)
+    .get(RunsController.downloadReads);
+
+
+router.route('/help')
+    .get(HelpController.index);
+
+
+router.route('*')
+    .all(function (req, res, next) {
+        return res.status(404).render('404');
+
+    });
 
 module.exports = router;
 
