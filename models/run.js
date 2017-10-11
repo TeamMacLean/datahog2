@@ -65,7 +65,7 @@ Run.define('downloadReads', function () {
                         //TODO download reads to ${}
                         return Promise.all(
                             run.reads.map(read => {
-                                return ENA.Util.ftpDownload(read.url, readsFolderPath);
+                                return ENA.Util.ftpDownload(read, readsFolderPath);
                             })
                         )
 
