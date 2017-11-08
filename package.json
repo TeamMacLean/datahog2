@@ -7,8 +7,8 @@
     "cheerio": "^1.0.0-rc.2",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.7",
-    "express": "^4.15.4",
-    "express-session": "^1.15.5",
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "fs-extra": "^4.0.2",
     "ftp": "^0.3.10",
     "gravatar": "^1.6.0",
@@ -17,8 +17,8 @@
     "node-schedule": "^1.2.5",
     "passport": "^0.4.0",
     "passport-ldapauth": "^2.0.0",
-    "queue": "^4.4.1",
-    "request": "^2.81.0",
+    "queue": "^4.4.2",
+    "request": "^2.83.0",
     "session-rethinkdb": "^2.0.0",
     "thinky": "^2.3.9",
     "xml2json": "^0.11.0",
@@ -28,8 +28,8 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
-    "bootstrap": "^4.0.0-beta",
+    "bootstrap": "^4.0.0-beta.2",
     "mocha": "^3.5.3",
-    "webpack": "^3.6.0"
+    "webpack": "^3.8.1"
   }
 }
